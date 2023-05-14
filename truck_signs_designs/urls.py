@@ -22,6 +22,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('polls/',include('polls.urls')),
     # url(r'^$', HomePageAPI, name='home'),
     url(r'^truck-signs/', include('backend.urls', namespace='trucks-signs-namespace')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

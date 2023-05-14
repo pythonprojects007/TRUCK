@@ -22,7 +22,16 @@ TEMPLATES_DIR = os.path.join(ROOT_BASE_DIR,'templates')
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 
+import environ
 
+DEBUG = True
+
+env = environ.Env()
+# reading env file
+environ.Env.read_env()
+
+SECRET_KEY= env("SECRET_KEY")
+DEBUG = True
 
 ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1',]
 
@@ -39,6 +48,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'cloudinary',
     'backend',
+    'polls',
     'django.contrib.admin',
 ]
 
@@ -95,7 +105,16 @@ WSGI_APPLICATION = 'truck_signs_designs.wsgi.application'
 #     }
 # }
 
-
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'mydb1',
+        'USER': 'myprojectuser',
+        'PASSWORD': 'password',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators

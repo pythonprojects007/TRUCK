@@ -9,7 +9,10 @@ class CategorySerializer(serializers.ModelSerializer):
 
     def get_sample_product_id(self, obj):
         product = Product.objects.filter(category=obj).first()
-        return product.id
+        print("........................................")
+        print(product)
+        if product:
+            return product.id
 
     class Meta:
         model = Category
